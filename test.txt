@@ -1,0 +1,9 @@
+{
+  "links" :
+	[
+		{"display":"home", "url":"index.php"},
+		{"display":"update", "url":"update.php"},
+		{"display":"stats", "url":"stats.php"}
+	]
+}
+

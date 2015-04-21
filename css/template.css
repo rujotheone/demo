@@ -1,0 +1,42 @@
+    .navbar
+    {
+    position:fixed;
+    left:0px;
+    width:100%;
+    top:0px;
+    background-color:#ddd;
+    border-radius: 0px;
+    padding:10px 40px;
+    z-index: 20
+    }
+
+   ul li{
+        position:relative;
+        left:50%;
+        margin-bottom: 0px
+
+   }
+
+    li{
+        display:inline;
+        text-decoration: none;
+    }
+       
+ .footer
+ {
+    position:relative;
+    height:50px;
+    bottom: 10px;
+    background-color: rgb(50,84,123);
+    width:100%;
+    margin-top:100px;
+    padding :20px 10px;
+ }
+
+ footer li{
+    position:relative;
+    width:40%;
+    padding: 4px 10px;
+    text-decoration: none;
+ }
+   

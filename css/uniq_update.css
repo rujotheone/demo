@@ -1,0 +1,65 @@
+
+
+.container{
+        height:550px;
+        background-image: url("img/forex.png");
+     }
+
+     .row
+    {
+        background-color: #E4EDF2;
+        width:70%;
+        margin-left: auto;
+        margin-right:auto; 
+        padding:10px 10px;
+        height:100%;
+        border-radius: 5px
+        
+    }
+
+    .banner{    
+        background-color: rgb(50,84,123);
+        width:100%;
+        height:140px;
+        padding:20px;
+        border-bottom: 2px solid black;
+        margin-bottom: 20px;
+        z-index:2;
+        line-height: 2em;
+        opacity:0.9;
+        font-size:1.3em;
+        font-weight: bold;
+        font-family: "Helvetica Neue", "Arial","sans-serif"
+
+        }
+
+        #instruction{
+           position: relative;
+           width:100%;
+           color:black;
+           text-align: center;
+           margin-bottom: 10px;
+           font-size:1.8em;
+        font-weight: bold;
+        font-family: "Helvetica Neue", "Arial","sans-serif"
+
+        }
+
+     .info
+         {
+            //position:relative;
+            width: 60%;
+            float: right;
+            display:block;
+            padding:5px;
+            border-bottom:1px solid white;
+            
+         }
+
+          #section{
+        position:relative;
+        bottom:70px;
+        width:100%;
+        height:20px;
+        z-index:-5;
+    }
