@@ -1,5 +1,7 @@
-<?php session_start(); ?>
+<?php session_start(); 
+$_SESSION["redirect"]="create.php";
 
+?>
 <!doctype html>
 <html>
 
@@ -13,83 +15,92 @@
 
    <link rel="stylesheet" href="css/bootstrap-3.3.1.css">
   <link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/font.css">
-  <link rel="stylesheet" href="css/pretty.css">
-  <link rel="stylesheet" href="css/template.css">
   <link rel="stylesheet" href="css/uniq_home.css">
+  
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/bootstrap-3.3.1.min.js"></script>
-  <script src="js/moment-locales.js"></script>
-  <script src="js/transition.js"></script>
-  <script src="js/collapse.js"></script>
-  
-  
-  <script src="js/bootstrap-datetimepicker.js"></script>
-  <script>
-  $(document).ready(function(){
- 
-  $('.base').click(
-  function(){
-       $('.base').fadeOut(300);
-            })
-})
 
-  </script>
+  <style type="text/css">
+  
+
+
+
+  </style>
+   <script></script>
+
 
 </head>
 <body>
-  
-  <?php include ('header.php');?>
-  <div class="banner"><img src="">
-    <span class="info">
-    Rexcheck allows you to aggregrate and visualize your forex data
-    </span>
+<div  class="navbar">
+  <div class="login-con">
+    <form role="form" class="form-inline" action="login.php" method="post" >
+     
+    <div class="form-group">        
+        <label for="username">Username</label>
+         <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+      </div>
+
+        <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+      </div>
+
+      <div class="form-group">
+          <button type="submit" class="btn btn-default">Login</button>
+      </div>
+
+    </form>
+    <div id="instructionLogin">
+      <h4> <?php 
+      if (isset($_SESSION["errorlogin"] ) || $_SESSION["errorlogin"]=" ")
+      echo $_SESSION["errorlogin"]; 
     
+      ?> </h4>
+    </div>
+  </div> 
 </div>
+      
+    
 
-
-  <div  class="container">
+    <div  class="signup-container">
     <div class="row">
       <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
 
-    <form role="form" action="/rexcheck/actioncreate.php" method="post" >
+    <form role="form" action="signup.php" method="post" >
       <img class="img img-rounded">
-      <div id="instruction">
-        Enter the new currency
+      <div id="instructionSign">
+       <h4> <?php 
+       if (isset($_SESSION["errorsign"]) || $_SESSION["errorsign"]=" ")
+       echo $_SESSION["errorsign"]; 
+       ?> </h4>
+       <H1> SIGN UP </H1>
     </div>
-    <input type="hidden" value="create" name="activate" >
-    	<div class="form-group">        
-    		<label for="basecurrency">Base Currency</label>
-    		<input type="text" class="form-control" id="base" name="base" placeholder="enter base currency">
+  
+      <div class="form-group">        
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
         </div>
         <div class="form-group">
-    		<label for="comparecurrency">Other Currency</label>
-    		<input type="text" class="form-control" id="compare" name="compare" placeholder="enter other  currency">
-    	</div>
-    	<div class="form-group">
-          <button type="submit" class="btn btn-default">Submit</button>
-    	</div>
-      <div id="confirm">
-         <span><?php  echo $_SESSION["confirm"]; 
-                      $_SESSION["confirm"]=" ";
-                     ?>
-        </span>
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
       </div>
+      <div class="form-group">
+        <label for="comparepassword">Re-Enter Password</label>
+        <input type="password" class="form-control" id="comparepassword" name="comparepassword" placeholder="Re-enter password">
+      </div>
+
+      <div class="form-group">
+          <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+      </form>
+    
        </div> 
       </div>
+
+      <?php include ('footer.php'); ?>
       </div>
-    </form>
-
-    <section id="section"></section>
+    
 
 
-
-<?php include ('footer.php'); ?>
-
-</body>
-
-
-
-</html>
+  </body>

@@ -20,12 +20,12 @@
      
       
    if ($d->create($currency)=="success")
-        $_SESSION["confirm"] = "Success entering the new currency pair";
+        $_SESSION["confirm"] = "Success entering the new financial security";
    else
         $_SESSION["confirm"] = "OOps! there was a problem";
        
 
-       header('Location: index.php#instruction');
+       header('Location: create.php#instruction');
        mysqli_close($con);
       
 
@@ -43,7 +43,7 @@
 
      $date=strtotime($_REQUEST['date']);
      $date=date('Y-m-d',$date);
-
+    echo $date;
      $value = $_REQUEST['value'];
      
     $tag = $d->update($currencyinput,$date,$time,$value);

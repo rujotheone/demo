@@ -1,4 +1,12 @@
-<?php session_start(); ?>
+<?php 
+session_start(); 
+$_SESSION["redirect"]="update.php"; 
+if (!isset($_SESSION["loggedin"]))
+{
+header('Location:index.php');
+}
+
+?>
 <!doctype html>
 <html>
 
@@ -17,6 +25,7 @@
   <link rel="stylesheet" href="css/pretty.css">
   <link rel="stylesheet" href="css/template.css">
   <link rel="stylesheet" href="css/uniq_update.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/bootstrap-3.3.1.min.js"></script>
@@ -78,8 +87,8 @@
         <div class="form-group" >
     		<label for="Date">Date</label>
     		<div class="input-group" id="datepicker">
-    		<input  type="text" class="form-control"  name="date" placeholder="Enter Date" >
-    		<span class="input-group-addon"><span class="glyphicon glyphicon-calender"></span></span>
+    		<input  type="text" class="form-control" id="date" name="date" placeholder="Enter Date" >
+    		<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
        </div>
        </div>
 
@@ -99,9 +108,11 @@
           <button type="submit" class="btn btn-default">Submit</button>
     	</div>
         <div id="confirm">
-         <span><?php  echo $_SESSION["confirm"]; 
-                     $_SESSION["confirm"]=" ";
-                     ?>
+         <span>
+          <?php  
+            if(isset($_SESSION["confirm"]))
+              echo $_SESSION["confirm"]; 
+            ?>
         </span>
       </div>
 

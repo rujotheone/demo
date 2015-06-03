@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <link rel="stylesheet" href="css/bootstrap-3.3.1.css">
+  <link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/font.css">
+  <link rel="stylesheet" href="css/pretty.css">
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/bootstrap-3.3.1.min.js"></script>
+  <script src="js/moment-locales.js"></script>
+  <script src="js/transition.js"></script>
+  <script src="js/collapse.js"></script>
+  
+  <script src="js/bootstrap-datetimepicker.js"></script>
+
+   <script src="js/flashcanvas.js"></script>
+ 
+  <script src="js/jquery.flot.min.js"></script>
+  
+
+   
+   <script type="text/javascript">
+      $(document).ready(function(){
+    //if you want not redirect or refresh use e.preventDefault()            
+
+         $('form').submit(function (event) {
+    $.ajax({
+        url: 'json.php',
+        method: 'POST',
+        data : $('form').serialize(),
+        processData:false,
+        dataType:'json'
+            })
+                .done(function(response){
+                  console.log("response:",response);
+                  var series=[];
+                
+                  //[[11,13],[19,11],[30,-7]];
+                  
+                  $.each(response, function(i,val){
+                
+                    series[i]=[i,val];
+                   console.log("series:",series);
+                     })
+                
+            
+
+                  var options = {
+              series:{
+                        lines:{show:true},
+                        points: {show: true},
+                        color:"red",
+                        label:"first",
+                        hoverable:true
+              },
+              xaxis :{
+                show:true,
+                position: "bottom",
+                max:5
+              },
+               yaxis :{
+                show:true,
+                position:"left",
+                max:5
+              }
+             
+         };
+                  $.plot($('#placeholder'), [
+
+            { data: series /*[[1,1],[2,3]]*/ },
+
+               ],
+
+               options
+           );
+         
+
+
+                  
+                })
+                .fail(function(data,status){
+                  alert("error" +  status);
+                })
+         event.preventDefault();
+         
+          });
+   
+
+$('#datetimepicker').datetimepicker({});
+
+          
+          $.get("test1.txt", function (data,status){
+              //console.log(data);
+              
+              var nums=[];
+              nums=jQuery.parseJSON(data);
+
+            for (var i=0;i<nums.length;i++){
+            
+            //console.log(nums[i].y);
+            
+
+
+          }
+
+
+
+                  
+         //end
+         });
+      });
+
+
+      var xmlp=new XMLHttpRequest();
+      var url ="test.txt";
+
+      xmlp.onreadystatechange = function(){
+       if (xmlp.readyState == 4 && xmlp.status == 200){
+        var myArr= JSON.parse(xmlp.responseText);
+         pull(myArr.links);
+          }
+      }
+
+      xmlp.open("GET",url,true);
+      xmlp.send();
+
+      function pull(arr){
+        var out ="";
+        for (var i=0;i<arr.length;i++){
+          out+='<a href="' + arr[i].url + '">' + arr[i].display +  '</a><br>';
+
+        }
+             $('#show').html(out + "jq");
+             //document.getElementById("show").innerHTML =out + "js";
+      }
+
+
+ </script>
+</head>
+
+  <body>
+   <form role="form" class="form-inline" action="/rexcheck/json.php" method="post"  >
+        <input type="text" class="form-control" id="first" name="first" placeholder="enter name">
+        <button type="submit" class="btn btn-default">Submit</button>
+
+
+     </form> 
+
+<div id="show"></div>
+<div id ="placeholder" style="width:500px;height:500px"></div>
+      
+     
+   
+  </body>
+
+
+
+
+
+<html>
