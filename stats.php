@@ -96,28 +96,28 @@ header('Location:index.php');
                   $.each(response, function(i,val){
                 
                     series[i]=[i,val];
-                   console.log("series:",series);
-                     })
+                  // console.log("series:",series);
+                     });console.log("x:",Math.floor((series[series.length-1][0])+1));
                 
             
 
                   var options = {
               series:{
                         lines:{show:true},
-                        points: {show: true},
-                        color:"red",
+                        points: {show: false},
+                        color:"blue",
                         label:"first",
                         hoverable:true
               },
               xaxis :{
                 show:true,
                 position: "bottom",
-                max:5
+                max:Math.floor((series[series.length-1][0])+1)
               },
                yaxis :{
                 show:true,
                 position:"left",
-                max:5
+                max:Math.floor((series[series.length-1][1])+1)
               }
              
          };
